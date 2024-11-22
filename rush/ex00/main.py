@@ -11,14 +11,18 @@ def print_board(board):
 def simulate_pawn_attack(board, r, c):
     """จำลองการโจมตีของ Pawn (เบี้ย)"""
     rows, cols = len(board), len(board[0])
+    board[r][c]="P"
     for dr, dc in [(-1, -1), (-1, 1)]:  # โจมตีทแยงมุมซ้ายและขวาบน
         nr, nc = r + dr, c + dc
         if is_in_bounds(nr, nc, rows, cols):
             board[nr][nc] = 'X'
-
+#โกรธละะะะ
+#หิวข้าวแล้วววว
+#บาปแล้ววว
 def simulate_bishop_attack(board, r, c):
     """จำลองการโจมตีของ Bishop (ทหารม้า)"""
     rows, cols = len(board), len(board[0])
+    board[r][c]="B"
     directions = [(-1, -1), (-1, 1), (1, -1), (1, 1)]  # ทิศทางทแยงมุมทั้ง 4 ทิศ
     for dr, dc in directions:
         nr, nc = r, c
@@ -28,10 +32,12 @@ def simulate_bishop_attack(board, r, c):
             if not is_in_bounds(nr, nc, rows, cols):
                 break
             board[nr][nc] = 'X'
+    
 
 def simulate_rook_attack(board, r, c):
     """จำลองการโจมตีของ Rook (เรือ)"""
     rows, cols = len(board), len(board[0])
+    board[r][c]="R"
     directions = [(-1, 0), (1, 0), (0, -1), (0, 1)]  # ทิศทางตรงแนวนอนและแนวตั้ง
     for dr, dc in directions:
         nr, nc = r, c
@@ -45,6 +51,7 @@ def simulate_rook_attack(board, r, c):
 def simulate_queen_attack(board, r, c):
     """จำลองการโจมตีของ Queen (ราชินี)"""
     rows, cols = len(board), len(board[0])
+    board[r][c]="Q"
     directions = [(-1, -1), (-1, 1), (1, -1), (1, 1), (-1, 0), (1, 0), (0, -1), (0, 1)]  # ทั้ง 8 ทิศทาง
     for dr, dc in directions:
         nr, nc = r, c
@@ -63,8 +70,9 @@ def check_attack_success(board):
     return False
 
 def main():
-    """ฟังก์ชันหลักเพื่อจำลองการโจมตีของชิ้นส่วนหมากรุก"""
-    # สร้างกระดานหมากรุกขนาด 8x8 ที่ว่างเปล่า
+    """ ง่วง
+    อยากนอนนนนนน
+    หิวข้าว """
     board = [['.' for _ in range(8)] for _ in range(8)]
 
     # แสดงผลว่า "Success" ก่อนการจำลองการโจมตี
@@ -73,7 +81,7 @@ def main():
     # จำลองการโจมตีของแต่ละชิ้นส่วนหมากรุก
     # Pawn ที่ตำแหน่ง (3, 3)
     board_pawn = [row[:] for row in board]  # คัดลอกกระดาน
-    simulate_pawn_attack(board_pawn, 3, 3)
+    simulate_pawn_attack(board_pawn, 4, 4)
     print("Pawn (P) Attack Pattern:")
     print_board(board_pawn)
 
